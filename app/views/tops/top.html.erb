@@ -1,0 +1,46 @@
+<div class="audio", id="audio">
+  <audio id="sounds" src="assets/レトロショータイム.mp3" preload="auto">
+  </audio>
+  <button type="button">テスト</button>
+</div>
+<br>
+<%= button_to "今何時", { controller: 'tops', action: 'ima' }, { method: :get } %>
+<br>
+<div class="audio2", id = "audio2">
+  <audio id = "sounds2" src = "assets/retrocut.mp3" preload="auto">
+  </audio>
+  <%= button_tag "本仕様",type: "button" %>
+</div>
+<% if @ima.present? %>
+  <p><%= @ima %></p>
+  <br>
+  <input type="text" id="text" name="text" value="<%= @ima %>です" />
+  <button onclick="readAloud()">読み上げる</button>
+  <p>上記テキストを読み上げます。<br>「読み上げる」ボタンをクリックしてください。</p>
+<% end %>
+
+  <script>
+  function readAloud() {
+    // テキストを取得
+    const text = document.getElementById("text").value
+
+    // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+    if ('speechSynthesis' in window) {
+      // 発言を設定
+      const uttr = new SpeechSynthesisUtterance()
+      uttr.text = text
+      // 発言を再生
+      window.speechSynthesis.speak(uttr)
+
+  } else {
+    alert('大変申し訳ありません。このブラウザは音声合成に対応していません。')
+  }
+}
+
+sounds2.addEventListener('ended',function(){
+  const text = document.getElementById("text").value;
+  const uttr = new SpeechSynthesisUtterance();
+  uttr.text = text;
+  window.speechSynthesis.speak(uttr);
+  });
+</script>
