@@ -1,32 +1,30 @@
-<%= javascript_include_tag "tops.js" %>
-<div class="audio", id="audio">
-  <audio id="sounds" src="assets/レトロショータイム.mp3" preload="auto">
-  </audio>
-  <button type="button">テスト</button>
-</div>
-<br>
-<br>
-<div class="audio2", id = "audio2">
-  <audio id = "sounds2" src = "assets/retrocut.mp3" preload="auto">
-  </audio>
-  <%= button_to "本仕様",{action: 'ima'}, remote: true %>
-</div>
-<br>
-<%= link_to 'ユーザー作成', new_user_path %>
-<br>
-<% if logged_in? %>
-  <%= link_to 'ログアウト', logout_path, method: :delete %>
-<% else %>
-  <%= link_to 'ログイン', login_path %>
-<% end %>
 
 <br>
 <br>
+<div class="content">
+  <div class="audio2", id = "audio">
+    <audio id = "sounds2" src = "assets/y2mate.com.wav" preload="auto">
+    </audio>
+    <%= button_to "教えて桑田佳祐！",{action: 'ima'}, {remote: true, class: 'flat border'} %>
+  </div>
+<br>
+  <% if not logged_in? %>
+    <%= link_to 'ユーザー作成', new_user_path %>
+  <% end %>
+<br>
+  <% if logged_in? %>
+    <%= link_to 'ログアウト', logout_path, method: :delete %>
+  <% else %>
+    <%= link_to 'ログイン', login_path %>
+  <% end %>
+</div>
+<br>
+<br>
 <input id='ima' type='hidden'>
-<% if logged_in? %>
+<!-- <% if logged_in? %>
   <%= button_tag 'コンフィグを設定', type: "button", id: "button1" %>
   <div id="message"></div>
-  <div id="button_area"></div>
+  <div id="button_area"></div> -->
 
 
 <%end%>
