@@ -2,8 +2,8 @@
 <br>
 <br>
 <div class="content">
-  <div class="audio2", id = "audio">
-    <audio id = "sounds2" src = "assets/y2mate.com.wav" preload="auto">
+  <div class="audio", id = "audio">
+    <audio id = "sounds" src = "assets/y2mate.com.wav" preload="auto">
     </audio>
     <%= button_to "教えて桑田佳祐！",{action: 'ima'}, {remote: true, class: 'flat border'} %>
   </div>
@@ -20,35 +20,23 @@
 </div>
 <br>
 <br>
-<input id='ima' type='hidden'>
-<!-- <% if logged_in? %>
+<!-- <input id='ima' type='hidden'>
+<% if logged_in? %>
   <%= button_tag 'コンフィグを設定', type: "button", id: "button1" %>
   <div id="message"></div>
-  <div id="button_area"></div> -->
+  <div id="button_area"></div>
+<%end%> -->
 
 
-<%end%>
+
+
 
 <script>
-sounds2.addEventListener('ended', function () {
+sounds.addEventListener('ended', function () {
   const text = document.getElementById("ima").value;
   const uttr = new SpeechSynthesisUtterance();
   uttr.text = text;
   window.speechSynthesis.speak(uttr);
 });
-
-$(document).ready(function () {
-
-  $("#load_area").load("partial/_config");
-
-  $("#button1").click(function () {
-    loadPartialView('partial/_config');
-  });
-});
-
-function loadPartialView(loadPath) {
-  $("#button_area").load(loadPath, function (response) {
-  });
-}
 
 </script>
