@@ -1,14 +1,28 @@
 window.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("audio");
   audio.addEventListener('click', function () {
-    document.getElementById("sounds2").currentTime = 0;
-    document.getElementById("sounds2").play();
+    document.getElementById("sounds").currentTime = 0;
+    document.getElementById("sounds").play();
   });
 });
 
+$(document).ready(function () {
 
-function readAloud() {
-  // テキストを取 得
+  $("#load_area").load("partial/_config");
+
+  $("#button1").click(function () {
+    loadPartialView('partial/_config');
+  });
+});
+
+function loadPartialView(loadPath) {
+  $("#button_area").load(loadPath, function (response) {
+  });
+}
+
+
+/*function readAloud() {
+  // テキストを取得
   const text = document.getElementById("ima").value
 
   // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
@@ -23,3 +37,4 @@ function readAloud() {
     alert('大変申し訳ありません。このブラウザは音声合成に対応していません。')
   }
 }
+*/
